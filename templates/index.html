@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="categoryList">
+    {% if user == 'Please Login'%}
+        Please Login <a href="login">Here</a>
+    {%endif%}
+    {% if user != 'Please Login'%}
+        <p>Welcome {{ user }} , <a href="logout">Logout</a></p>  
+    {%endif%} 
+
+  
+  <p>Select a Category for more detail:</p>
+  
+  <ul>
+    {% for c in categories %}
+    <li><a class="button" href={{ url_for('view_category', id=c.id, name=c.name) }}>{{ c.name }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

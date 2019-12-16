@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+    <div class="container">
+            <form name="saveNewItem" action="/addItem" method="POST">
+                <h3>Add Item</h3>
+                <p>
+                    <input type="text" name="inputName"  placeholder="Name" required value=""> 
+                </p>
+                <p>
+                    <textarea rows="3" cols="20" name="inputDescription" placeholder="Description" required value=""></textarea>                        
+                </p>                
+                <p>                   
+                    <select name="selectCategory" required>
+                        <option disabled>Category</option>
+                        {% for c in categories %}
+                            <option value="{{c.id}}" {% if c.id == id%} selected="selected"{%endif%}>{{ c.name }}</option>
+                        {% endfor %} </select>                        
+                </p>
+
+                <p>
+                    <input type="submit" name="inputSave" class="button" value="Save"/>
+                    <a href="/" class="button">Cancel</a>
+                </p>
+            </form>
+        </div>
+{% endblock %}

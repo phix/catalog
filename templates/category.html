@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="categoryList">
+  <p>Items for <strong>{{name}} </strong>: Select a Item for more detail:</p>
+  <ul>
+    {% for c in items %}
+    <li>
+        {{ c.name }}
+      <a class="button" href={{ url_for('view_item', id=c.id, name=c.name) }} style="float:right;"">View</a>
+      {% if catalog_user_id == c.user_id%}
+        <a class="button" href="/edit/{{c.id}}" style="float:right;">Edit</a>
+        <a class="button" href="/deleteItem/{{c.id}}" style="float:right;">Delete</a>
+      {%endif%}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <!-- <a href="/add">Add Item</a> -->
+  <a class="button" href={{ url_for('add_item', id=id) }}>Add Item</a>
+</div>
+{% endblock %}

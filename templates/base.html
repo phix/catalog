@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalog App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  </head>
+
+  <body>
+    <h1><a href={{ url_for('index') }}>Catalog App</a></h1>
+
+    {% block content %} {% endblock %}
+  </body>
+</html>

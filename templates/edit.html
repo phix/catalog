@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+    <div class="container">
+            <form name="editItem" action="/editItem/{{item.id}}" method="POST">
+                <h3>Edit Item</h3>
+                <p>
+                    <input type="text" name="inputName"  placeholder="Name" required value="{{item.name}}"> 
+                </p>
+                <p>
+                    <textarea rows="3" cols="20" name="inputDescription" placeholder="Description" required value="">{{item.description}}</textarea>                        
+                </p>                
+                <p>                   
+                    <select name="selectCategory" required>
+                        <option disabled>Category</option>
+                        {% for c in categories %}
+                            <option value="{{c.id}}" {% if c.id == item.id%} selected="selected"{%endif%}>{{ c.name }}</option>
+                        {% endfor %} </select>                        
+                </p>
+
+                <p>
+                    <input type="submit" name="inputEditSave" class="button" value="Save"/>
+                    <a href="/" class="button">Cancel</a>
+                </p>
+            </form>
+        </div>
+{% endblock %}
